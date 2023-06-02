@@ -1,0 +1,39 @@
+{
+  "name": "stencil-ionic-firebase-cap",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Stencil App Starter",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "dev": "stencil build --dev --watch --serve",
+    "start": "npm run dev",
+    "test": "jest --no-cache",
+    "test.watch": "jest --watch --no-cache",
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run serve"
+  },
+  "dependencies": {
+    "@capacitor-firebase/authentication": "^5.0.0",
+    "@capacitor/app": "5.0.2",
+    "@capacitor/core": "5.0.4",
+    "@capacitor/haptics": "5.0.2",
+    "@capacitor/keyboard": "5.0.2",
+    "@capacitor/status-bar": "5.0.2",
+    "@ionic/core": "^7.0.10",
+    "firebase": "^9.22.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
+  },
+  "author": "Cory McArthur",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/cli": "5.0.4",
+    "@stencil/core": "^3.3.0",
+    "@stencil/sass": "^3.0.4"
+  }
+}

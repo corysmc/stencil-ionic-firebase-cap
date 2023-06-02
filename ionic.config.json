@@ -1,0 +1,7 @@
+{
+  "name": "@stencil/starter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
