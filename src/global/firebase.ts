@@ -3,6 +3,7 @@ import { ClientApiParams, ClientApiResponse } from "@og-shared/types";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import { initEmulators } from "./firebase-emulators";
 
 const app = initializeApp({
   apiKey: "AIzaSyCBSEGiyOvdw_0gMs_lbGDY_EjGYlRlQGI",
@@ -12,6 +13,7 @@ const app = initializeApp({
   messagingSenderId: "1020832564541",
   appId: "1:1020832564541:web:1b05884e8e0d0b2a02f154",
 });
+initEmulators();
 export const firebaseAuth = getAuth(app);
 
 export const signInWithEmail = (params: {

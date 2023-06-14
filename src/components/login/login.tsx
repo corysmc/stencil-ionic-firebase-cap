@@ -1,5 +1,5 @@
 import { Component, Host, h } from "@stencil/core";
-import { signInWithEmail } from "../../global/firebase";
+import { signInWithASA, signInWithEmail } from "../../global/firebase";
 
 @Component({
   tag: "demo-login",
@@ -23,6 +23,9 @@ export class Login {
         </ion-header>
         <ion-content>
           <ion-button onClick={() => this.signIn()}>Sign In</ion-button>
+          <ion-button onClick={() => signInWithASA()}>
+            Sign In With ASA
+          </ion-button>
         </ion-content>
       </Host>
     );
