@@ -1,6 +1,8 @@
 import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
+import { ClientApiParams, ClientApiResponse } from "@og-shared/types";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFunctions, httpsCallable } from "firebase/functions";
 
 const app = initializeApp({
   apiKey: "AIzaSyCBSEGiyOvdw_0gMs_lbGDY_EjGYlRlQGI",
@@ -19,8 +21,14 @@ export const signInWithEmail = (params: {
   return FirebaseAuthentication.signInWithEmailAndPassword(params);
 };
 
-export const signInWithASA = () => {
+export const signInWithASA = async () => {
   console.log("tapped sign in with ASA");
+  const params = { data: "test-data-from-client" };
+  const res = await httpsCallable<ClientApiParams, ClientApiResponse>(
+    getFunctions(),
+    "clientApi"
+  )(params);
+  console.log("res", res);
 };
 
 export const getCurrentUser = async () => {

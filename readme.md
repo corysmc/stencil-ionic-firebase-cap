@@ -6,3 +6,11 @@
 npm install
 npm start
 ```
+
+# Functions
+
+## Running tests
+```bash
+cd functions
+npm run test.watch
+```

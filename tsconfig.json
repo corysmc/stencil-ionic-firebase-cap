@@ -12,9 +12,11 @@
     "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@og-shared/types": ["./shared/types"]
+    }
   },
-
-  "include": ["src"],
+  "include": ["src", "shared"],
   "exclude": ["node_modules"]
 }
