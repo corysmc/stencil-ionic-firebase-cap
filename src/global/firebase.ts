@@ -23,9 +23,7 @@ export const signInWithEmail = (params: {
   return FirebaseAuthentication.signInWithEmailAndPassword(params);
 };
 
-export const signInWithASA = async () => {
-  console.log("tapped sign in with ASA");
-  const params = { data: "test-data-from-client" };
+export const clientApi = async (params: ClientApiParams) => {
   const res = await httpsCallable<ClientApiParams, ClientApiResponse>(
     getFunctions(),
     "clientApi"

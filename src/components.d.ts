@@ -8,6 +8,8 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DemoApp {
     }
+    interface DemoLoading {
+    }
     interface DemoLogin {
     }
     interface DemoProfile {
@@ -19,6 +21,12 @@ declare global {
     var HTMLDemoAppElement: {
         prototype: HTMLDemoAppElement;
         new (): HTMLDemoAppElement;
+    };
+    interface HTMLDemoLoadingElement extends Components.DemoLoading, HTMLStencilElement {
+    }
+    var HTMLDemoLoadingElement: {
+        prototype: HTMLDemoLoadingElement;
+        new (): HTMLDemoLoadingElement;
     };
     interface HTMLDemoLoginElement extends Components.DemoLogin, HTMLStencilElement {
     }
@@ -34,6 +42,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "demo-app": HTMLDemoAppElement;
+        "demo-loading": HTMLDemoLoadingElement;
         "demo-login": HTMLDemoLoginElement;
         "demo-profile": HTMLDemoProfileElement;
     }
@@ -41,12 +50,15 @@ declare global {
 declare namespace LocalJSX {
     interface DemoApp {
     }
+    interface DemoLoading {
+    }
     interface DemoLogin {
     }
     interface DemoProfile {
     }
     interface IntrinsicElements {
         "demo-app": DemoApp;
+        "demo-loading": DemoLoading;
         "demo-login": DemoLogin;
         "demo-profile": DemoProfile;
     }
@@ -56,6 +68,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "demo-app": LocalJSX.DemoApp & JSXBase.HTMLAttributes<HTMLDemoAppElement>;
+            "demo-loading": LocalJSX.DemoLoading & JSXBase.HTMLAttributes<HTMLDemoLoadingElement>;
             "demo-login": LocalJSX.DemoLogin & JSXBase.HTMLAttributes<HTMLDemoLoginElement>;
             "demo-profile": LocalJSX.DemoProfile & JSXBase.HTMLAttributes<HTMLDemoProfileElement>;
         }

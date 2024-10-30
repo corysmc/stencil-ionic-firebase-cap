@@ -1,18 +1,24 @@
-import { Component, Host, h } from "@stencil/core";
-import { signInWithASA, signInWithEmail } from "../../global/firebase";
+import { Component, ComponentInterface, Host, h } from "@stencil/core";
+import { logEvent } from "firebase/analytics";
+import { analytics, signInWithEmail } from "../../global/firebase";
 
 @Component({
   tag: "demo-login",
   styleUrl: "login.scss",
 })
-export class Login {
+export class Login implements ComponentInterface {
+  componentDidLoad(): void {
+    logEvent(analytics, "page_view");
+  }
+
   private async signIn() {
     await signInWithEmail({
-      email: "test@mailinator.com",
-      password: "testing",
+      email: "corytest@mailinator.com",
+      password: "testing123",
     });
     console.log("signed in!");
   }
+
   render() {
     return (
       <Host>
@@ -23,9 +29,6 @@ export class Login {
         </ion-header>
         <ion-content>
           <ion-button onClick={() => this.signIn()}>Sign In</ion-button>
-          <ion-button onClick={() => signInWithASA()}>
-            Sign In With ASA
-          </ion-button>
         </ion-content>
       </Host>
     );

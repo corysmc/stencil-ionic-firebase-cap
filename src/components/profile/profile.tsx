@@ -1,4 +1,11 @@
-import { Component, Host, State, h } from "@stencil/core";
+import {
+  Component,
+  Host,
+  State,
+  h,
+  ComponentInterface,
+  Fragment,
+} from "@stencil/core";
 import { getCurrentUser, signOut } from "../../global/firebase";
 import { User } from "@capacitor-firebase/authentication";
 
@@ -6,7 +13,7 @@ import { User } from "@capacitor-firebase/authentication";
   tag: "demo-profile",
   styleUrl: "profile.scss",
 })
-export class Profile {
+export class Profile implements ComponentInterface {
   @State() user: User | null = null;
 
   async componentDidLoad() {
@@ -26,18 +33,27 @@ export class Profile {
         </ion-header>
         <ion-content>
           <h2 class="ion-text-center">Logged in!</h2>
-          <ion-button onClick={() => signOut()}>Sign Out</ion-button>
 
           {this.user ? (
-            <ion-list>
-              {Object.keys(this.user).map((key) => (
-                <ion-item>
-                  <ion-label>{key}</ion-label>
-                  {/* @ts-ignore */}
-                  {this.user?.[key]}
-                </ion-item>
-              ))}
-            </ion-list>
+            <Fragment>
+              <ion-list>
+                <ion-item-divider />
+                {Object.keys(this.user).map((key) => (
+                  <ion-item>
+                    <ion-label>{key}</ion-label>
+                    {/* @ts-ignore */}
+                    {this.user?.[key]}
+                  </ion-item>
+                ))}
+              </ion-list>
+              <ion-button
+                color="danger"
+                fill="outline"
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </ion-button>
+            </Fragment>
           ) : (
             <ion-spinner />
           )}
